@@ -6,7 +6,7 @@
 # en çok 1080x1920, büyütme yok.
 set -euo pipefail
 
-MANIFEST="${MANIFEST:-https://nicescarfs.com/ig/reels}"
+MANIFEST="${MANIFEST:-https://nicescarfs.com/ig/reels/}"
 TAG=reels
 FONT="$(pwd)/fonts/DMMono-Medium.ttf"
 work="$(mktemp -d)"
