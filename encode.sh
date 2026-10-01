@@ -43,7 +43,7 @@ jq -c '.items[]' "$work/m.json" | while read -r it; do
     curl -fsSL --retry 3 "$close" -o "$d/close.jpg"
   fi
 
-  read -r w h < <(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=' ' "$d/src.mp4")
+  IFS=, read -r w h < <(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$d/src.mp4")
   rot=$(ffprobe -v error -select_streams v:0 -show_entries stream_side_data=rotation -of csv=p=0 "$d/src.mp4" | head -1 || true)
   if [[ "${rot#-}" == "90" || "${rot#-}" == "270" ]]; then t=$w; w=$h; h=$t; fi
   # 9:16 kırpma alanı kaynak çözünürlükte; fazlası alttan (baş kesilmez) ya da iki yandan eşit gider.
